@@ -1,0 +1,5 @@
+ec2_type = "t2.micro"
+key-name = "Ahmed-Rushdy"
+ami = "ami-0c02fb55956c7d316"
+security-group = "aws_security_group.allow_tls.id"
+tags = "Rushdy"
