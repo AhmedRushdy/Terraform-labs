@@ -2,7 +2,7 @@ resource "aws_instance" "web" {
 ami = var.ami
 instance_type = var.ec2_type
 key_name = aws_key_pair.deployer.key_name
-vpc_security_group_ids=[ aws_security_group.allow_tls.id ]
+vpc_security_group_ids=[ var.security-group ]
 tags = {
 Name = var.tags
 }
@@ -36,4 +36,13 @@ resource "aws_security_group" "allow_tls" {
   tags = {
     Name = "allow_tls"
   }
+output "instance_ip_addr" {
+  value       = aws_instance.web.private_ip
+  description = "The private IP address the instance."
+}
+
+output "instance_ip_addr_public" {
+  value       = aws_instance.web.public_ip
+  description = "The public IP address of the instance."
+}
 }
